@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6.5
+  django:
+    build:
+      context: .
+      dockerfile: ./docker/django/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+      - static:/static
+      - media:/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:
+  static:
+    driver: local
+  media:
+    driver: local

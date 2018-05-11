@@ -11,21 +11,23 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from os import path
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+root = environ.Path(__file__) - 3
+env = environ.Env(DEBUG=(bool, True), )
+environ.Env.read_env(env_file=root('.env'))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%xzgrfxq!ytbpa7e6ctbgutnnt6%k(n+g*m&5m01dx%umltni)'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.abspath(os.path.join(__file__, '..')))
+)
+DEBUG = env('DEBUG', default=True)
+INTERNAL_IPS = env.list('INTERNAL_IPS', [], default='127.0.0.1')
+SECRET_KEY = env('SECRET_KEY')
+SITE_ID = env('SITE_ID', default=1)
 
 
 # Application definition
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'mysite',
 ]
 
 MIDDLEWARE = [
@@ -74,10 +78,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': env.db(
+        default='postgres://postgres:postgres@db:5432/postgres'
+    )
 }
 
 
@@ -118,3 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = env('EMAIL_PORT')
