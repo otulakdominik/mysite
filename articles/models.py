@@ -32,7 +32,7 @@ class Article(models.Model):
         blank=True,
     )
 
-    comments_count = models.PositiveSmallInteger(
+    comments_count = models.PositiveSmallIntegerField(
         'comments count',
         default=0,
         editable=True,
