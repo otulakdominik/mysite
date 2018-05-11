@@ -16,24 +16,24 @@ class Entry(models.Model):
         'body',
     )
 
-    created = models.DataTimeField(
+    created = models.DateTimeField(
         'created',
         auto_now_add=True,
     )
 
-    modified = models.DataTimeField(
+    modified = models.DateTimeField(
         'modified',
         auto_now=True,
     )
 
-    pub_data = models.DataTimeField(
+    pub_data = models.DateTimeField(
         'published data',
         null=True,
         blank=True,
 
     )
 
-    comments_count = models.PositiveSmallIntegierField(
+    comments_count = models.PositiveSmallIntegerField(
         'comments count',
         default=0,
         editable=True,
