@@ -1,3 +1,12 @@
 from django.db import models
 
-# Create your models here.
+
+class Comments(models.Model):
+    body = models.TextField(
+        'body',
+    )
+
+    created = models.DateField(
+        'created',
+        auto_now_add=True,
+    )
