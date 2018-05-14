@@ -45,3 +45,7 @@ class Entry(models.Model):
     )
 
     published = PublishedManager()
+
+    class Meta:
+        verbose_name = 'entry'
+        verbose_name_plural = 'entries'

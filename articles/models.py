@@ -44,3 +44,7 @@ class Article(models.Model):
     )
 
     published = PublishedManager()
+
+    class Meta:
+        verbose_name = 'article'
+        verbose_name_plural = 'articles'
