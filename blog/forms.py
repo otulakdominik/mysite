@@ -2,7 +2,7 @@ from django import forms
 import datetime
 
 
-class ArticleAdminForm(forms.ModelForm):
+class BlogAdminForm(forms.ModelForm):
 
     def clean_pub_date(self):
         pub_date = self.cleaned_data['pub_date']

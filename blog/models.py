@@ -26,7 +26,7 @@ class Entry(models.Model):
         auto_now=True,
     )
 
-    pub_data = models.DateTimeField(
+    pub_date = models.DateTimeField(
         'published data',
         null=True,
         blank=True,

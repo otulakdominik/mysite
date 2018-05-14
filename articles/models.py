@@ -16,17 +16,17 @@ class Article(models.Model):
         'body',
     )
 
-    created = models.DateField(
+    created = models.DateTimeField(
         'created',
         auto_now_add=True,
     )
 
-    modified = models.DateField(
+    modified = models.DateTimeField(
         'modified',
         auto_now=True,
     )
 
-    pub_date = models.DateField(
+    pub_date = models.DateTimeField(
         'published date',
         null=True,
         blank=True,

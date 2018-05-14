@@ -8,7 +8,7 @@ class Comments(models.Model):
         'body',
     )
 
-    created = models.DateField(
+    created = models.DateTimeField(
         'created',
         auto_now_add=True,
     )
