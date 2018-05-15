@@ -49,3 +49,6 @@ class Entry(models.Model):
     class Meta:
         verbose_name = 'entry'
         verbose_name_plural = 'entries'
+
+    def __unicode__(self):
+        return self.title

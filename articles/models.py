@@ -48,3 +48,6 @@ class Article(models.Model):
     class Meta:
         verbose_name = 'article'
         verbose_name_plural = 'articles'
+
+    def __unicode__(self):
+        return self.title
