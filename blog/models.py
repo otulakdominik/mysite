@@ -1,54 +1,57 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(is_public=True)
+        return super().get_queryset().filter(pub_date_lte=timezone.now())
 
 
 class Entry(models.Model):
     title = models.CharField(
-        'title',
+        _('title'),
         max_length=255,
     )
 
     body = models.TextField(
-        'body',
+        _('body'),
     )
 
     created = models.DateTimeField(
-        'created',
+        _('created'),
         auto_now_add=True,
     )
 
     modified = models.DateTimeField(
-        'modified',
+        _('modified'),
         auto_now=True,
     )
 
     pub_date = models.DateTimeField(
-        'published data',
+        _('published data'),
         null=True,
         blank=True,
 
     )
 
     comments_count = models.PositiveSmallIntegerField(
-        'comments count',
+        _('comments count'),
         default=0,
         editable=True,
     )
 
     is_public = models.BooleanField(
-        'is public',
+        _('is public'),
         default=False,
     )
 
+    objects = models.Manager()
     published = PublishedManager()
 
     class Meta:
-        verbose_name = 'entry'
-        verbose_name_plural = 'entries'
+        verbose_name = _('entry')
+        verbose_name_plural = _('entries')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title

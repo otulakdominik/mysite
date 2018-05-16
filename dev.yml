@@ -15,6 +15,9 @@ services:
       - "8000:8000"
     depends_on:
       - db
+  elasticsearch:
+    image: elasticsearch:2.4.6
+      
 volumes:
   static:
     driver: local
