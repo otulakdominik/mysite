@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(is_public_lte=timezone.now())
+        return super().get_queryset().filter(pub_date__lte=timezone.now())
 
 
 class Article(models.Model):
@@ -38,11 +38,6 @@ class Article(models.Model):
         _('comments count'),
         default=0,
         editable=True,
-    )
-
-    is_public = models.BooleanField(
-        _('is public'),
-        default=False,
     )
 
     objects = models.Manager()

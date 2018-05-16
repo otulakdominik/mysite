@@ -41,11 +41,6 @@ class Entry(models.Model):
         editable=True,
     )
 
-    is_public = models.BooleanField(
-        _('is public'),
-        default=False,
-    )
-
     objects = models.Manager()
     published = PublishedManager()
 
