@@ -1,6 +1,6 @@
 from django.db import models
-from blog import models as blog
-from articles import models as articles
+from blog.models import Entry
+from articles.models import Article
 from django.utils.translation import gettext_lazy as _
 
 
@@ -15,13 +15,13 @@ class Comments(models.Model):
     )
 
     entry = models.ForeignKey(
-        blog.Entry,
+        Entry,
         on_delete=models.CASCADE,
         null=True,
     )
 
     article = models.ForeignKey(
-        articles.Article,
+        Article,
         on_delete=models.CASCADE,
         null=True,
     )
