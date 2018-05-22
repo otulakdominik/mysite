@@ -7,3 +7,4 @@ django-extensions
 django-debug-toolbar
 django-haystack
 elasticsearch==2.4.1
+celery

@@ -17,6 +17,8 @@ services:
       - db
   elasticsearch:
     image: elasticsearch:2.4.6
+  rabbitmq:
+    image: rabbitmq:latest
       
 volumes:
   static:
