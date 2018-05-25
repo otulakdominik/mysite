@@ -17,15 +17,20 @@ class Comments(models.Model):
     entry = models.ForeignKey(
         Entry,
         on_delete=models.CASCADE,
+        blank=True,
         null=True,
     )
 
     article = models.ForeignKey(
         Article,
         on_delete=models.CASCADE,
+        blank=True,
         null=True,
     )
 
     class Meta:
         verbose_name = _('comment')
         verbose_name_plural = _('comments')
+
+    def __str__(self):
+        return self.body
