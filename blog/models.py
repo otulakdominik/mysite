@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 
 class PublishedManager(models.Manager):
@@ -50,3 +52,6 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('entry:details', kwargs={'slug': slugify(self.title)})
