@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+  {% for entry in entries %}
+    <article>
+
+      <header>
+
+        <h2>
+          <a href="{{ entry.get_absolute_url }}" title="">{{ entry.title }}</a>
+        </h2>    
+
+      </header> 
+
+    </article>
+
+  {% empty %}
+    <h1>No articles found.</h1>
+  {% endfor %}
+
+  <div>
+    <span>
+      {% if is_paginated %}
+        <ul>
+        {% if page_obj.has_previous %}
+            <li>
+                <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+            </li>
+        {% endif %}
+            <li>
+                <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+            </li>
+        {% if page_obj.has_next %}
+            <li>
+                <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+            </li>
+        {% endif %}
+      {% endif %}
+    </span>
+  </div>
+
+{% endblock content %}

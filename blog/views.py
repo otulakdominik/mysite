@@ -1,6 +1,14 @@
-from django.views.generic.base import TemplateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    View,
+)
+from .models import Entry
 
 
-class HomeView(TemplateView):
-
-    template_name = "base.html"
+class EntryListView(ListView):
+    model = Entry
+    template_name = 'blog/list.html'
+    context_object_name = 'entries'
+    paginate_by = 10
+    queryset = Entry.published.all()

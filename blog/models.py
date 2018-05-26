@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(pub_date_lte=timezone.now())
+        return super().get_queryset().filter(pub_date__lte=timezone.now())
 
 
 class Entry(models.Model):
