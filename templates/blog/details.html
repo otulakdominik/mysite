@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
 
 {% block content %}
   <article>
@@ -6,23 +6,16 @@
     <header>
 
       <h2>
-        {{ entry.title }}
+        {{ object.title }}
       </h2>          
 
     </header> 
-
-    <div class="entry-content-media">
-      <div class="post-thumb">
-        <img src="{{ article.image.cover.url }}">
-      </div> 
-    </div>
-
     <div>
-      {{ entry.body|safe }}
+      {{ object.body|safe }}
     </div>
 
     <ul class="post-nav group">
-      {% for entry in argicle.comments.all %} 
+      {% for entry in entry.comments.all %} 
         {% comment %} put something there {% endcomment %}
       {% endfor %}
     </ul>

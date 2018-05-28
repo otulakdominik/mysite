@@ -43,6 +43,11 @@ class Entry(models.Model):
         editable=True,
     )
 
+    slug = models.SlugField(
+        _('slug'),
+        max_length=255
+    )
+
     objects = models.Manager()
     published = PublishedManager()
 
@@ -54,4 +59,4 @@ class Entry(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('entry:details', kwargs={'slug': slugify(self.title)})
+        return reverse('entry:details', kwargs={'slug': self.slug})
