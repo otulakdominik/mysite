@@ -14,7 +14,7 @@
       {{ object.body|safe }}
     </div>
 
-    <ul class="post-nav group">
+    <ul>
       <h3>
         Comments
       </h3>
@@ -26,6 +26,11 @@
         <br>
       {% endfor %}
     </ul>
+    <h1>New comment</h1>
+    <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
 
   </article>
  
