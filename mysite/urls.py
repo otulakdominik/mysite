@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomeView.as_view(), name='home'),
     path('blog/', include('blog.urls', namespace='entry')),
+    path('articles/', include('articles.urls', namespace='article')),
 ]

@@ -22,9 +22,5 @@ class BlogAdmin(admin.ModelAdmin):
         'slug': ('title',)
     }
 
-    def get_queryset(self, request):
-        return super().get_queryset(request) \
-            .prefetch_related('comments_set')
-
 
 admin.site.register(Entry, BlogAdmin)

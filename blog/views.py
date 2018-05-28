@@ -3,7 +3,6 @@ from django.views.generic import (
     DetailView,
     View,
 )
-from django.shortcuts import get_object_or_404
 from .models import Entry
 
 
@@ -18,7 +17,7 @@ class EntryListView(ListView):
 class EntryDetailView(DetailView):
     model = Entry
     template_name = 'blog/details.html'
-    context_object_name = 'entries'
+    context_object_name = 'entrie'
 
     def get_queryset(self):
         return super().get_queryset().prefetch_related('comments_set')
