@@ -15,8 +15,15 @@
     </div>
 
     <ul class="post-nav group">
-      {% for entry in entry.comments.all %} 
-        {% comment %} put something there {% endcomment %}
+      <h3>
+        Comments
+      </h3>
+      {% for comments_set in object.comments_set.all %} 
+        <td>
+          {{ comments_set.body}}
+        </td>
+        <br>
+        <br>
       {% endfor %}
     </ul>
 
