@@ -4,7 +4,7 @@ from django.views.generic import (
     View,
 )
 from .models import Article
-from comments.models import Comments
+from .tasks import comment_count
 from comments.forms import CommentForm
 from django.shortcuts import get_object_or_404
 
@@ -43,6 +43,7 @@ class ArticleDetailView(DetailView):
             comments = form.save(commit=False)
             comments.article = article
             comments.save()
+            comment_count.delay(article.id)
             return redirect(
                 reverse('article:details', kwargs={'slug': slug})
             )

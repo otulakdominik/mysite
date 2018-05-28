@@ -19,6 +19,11 @@ services:
     image: elasticsearch:2.4.6
   rabbitmq:
     image: rabbitmq:latest
+  worker:
+    build:
+      context: .
+      dockerfile: ./docker/django/Dockerfile
+    command: celery -A mysite worker -l info
       
 volumes:
   static:
