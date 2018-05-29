@@ -16,7 +16,7 @@
 
     <ul class="post-nav group">
       <h3>
-        Comments
+        Comments: {{ object.comments_count }}
       </h3>
       {% for comments_set in object.comments_set.all %} 
         <td>
@@ -26,7 +26,11 @@
         <br>
       {% endfor %}
     </ul>
-
+    <h1>New comment</h1>
+    <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
   </article>
  
 {% endblock content %}

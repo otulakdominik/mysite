@@ -16,7 +16,7 @@
 
     <ul>
       <h3>
-        Comments
+        Comments: {{ object.comments_count }}
       </h3>
       {% for comments_set in object.comments_set.all %} 
         <td>
