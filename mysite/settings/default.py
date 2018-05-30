@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'haystack',
+    'registration',
 
     'mysite',
     'blog',
@@ -135,6 +136,12 @@ HAYSTACK_CONNECTIONS = {
 }
 
 CELERY_BROKER_URL = 'amqp://rabbitmq:5672/'
+
+REGISTRATION_DEFAULT_FROM_EMAIL = 'admin@email.com'
+SEND_ACTIVATION_EMAIL = True
+SITE_ID = 1
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST')

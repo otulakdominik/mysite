@@ -6,5 +6,16 @@
             {% endblock %}</title>
     </head> 
     <body>
+    <a href="{% url 'article:list' %}">Articles</a>
+    <a href="{% url 'blog:list' %}">Entries</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'auth_logout' %}" style="float:right; margin-left: 5px;">Logout</a> 
+        {% else %}
+            <div>
+                <a href="{% url 'auth_password_reset' %}" style="float:right; margin-left: 5px;">Reset Password</a>
+                <a href="{% url 'registration_register' %}" style="float:right; margin-left: 5px;">Register </a></div>
+                <a href="{% url 'auth_login' %}" style="float:right;">Login</a>
+            </div>
+        {% endif %}
     </body>
 </html>

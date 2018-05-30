@@ -26,4 +26,5 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('blog/', include('blog.urls', namespace='entry')),
     path('articles/', include('articles.urls', namespace='article')),
+    path('accounts/', include('registration.backends.default.urls')),
 ]

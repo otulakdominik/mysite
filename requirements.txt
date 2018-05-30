@@ -8,3 +8,5 @@ django-debug-toolbar
 django-haystack
 elasticsearch==2.4.1
 celery
+django-registration-redux
+django-allauth
