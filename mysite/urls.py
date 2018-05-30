@@ -27,4 +27,5 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='entry')),
     path('articles/', include('articles.urls', namespace='article')),
     path('accounts/', include('registration.backends.default.urls')),
+    path('accounts/', include('allauth.urls'))
 ]

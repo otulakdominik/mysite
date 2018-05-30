@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title> {% block title %}
             {% endblock %}</title>
+        {% load socialaccount %}
+        {% providers_media_js %}
     </head> 
     <body>
     <a href="{% url 'article:list' %}">Articles</a>
@@ -15,6 +17,8 @@
                 <a href="{% url 'auth_password_reset' %}" style="float:right; margin-left: 5px;">Reset Password</a>
                 <a href="{% url 'registration_register' %}" style="float:right; margin-left: 5px;">Register </a></div>
                 <a href="{% url 'auth_login' %}" style="float:right;">Login</a>
+                <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Login Facebook</a>
+                <a href="{% provider_login_url 'twitter' method='js_sdk' %}">Sign in with Twitter</a>
             </div>
         {% endif %}
     </body>
