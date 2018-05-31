@@ -18,7 +18,7 @@
                 <a href="{% url 'registration_register' %}" style="float:right; margin-left: 5px;">Register </a></div>
                 <a href="{% url 'auth_login' %}" style="float:right;">Login</a>
                 <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Login Facebook</a>
-                <a href="{% provider_login_url 'twitter' method='js_sdk' %}">Sign in with Twitter</a>
+                <a href="{% provider_login_url 'twitter' %}">Sign in with Twitter</a>
             </div>
         {% endif %}
     </body>
