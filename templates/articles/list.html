@@ -1,6 +1,11 @@
 {% extends "articles/base.html" %}
 
 {% block content %}
+    {% csrf_token %}
+    <input type="text" id="search" name="search">
+    <ul id="search-results">
+
+    </ul>
   {% for article in articles %}
     <article>
 

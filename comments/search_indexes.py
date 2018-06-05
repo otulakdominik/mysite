@@ -1,10 +1,9 @@
 from haystack import indexes
 from .models import Comments
-import datetime
 
 
 class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
-    body = indexes.TextField(
+    text = indexes.CharField(
         document=True,
         use_template=True,
     )
@@ -15,10 +14,7 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     entry = indexes.MultiValueField()
     article = indexes.MultiValueField()
 
+    content_auto = indexes.EdgeNgramField(model_attr='body')
+
     def get_model(self):
         return Comments
-
-    def index_queryset(self, using=None):
-        return self.get_model().objects.filter(
-            pub_date__lte=datetime.datetime.now()
-        )

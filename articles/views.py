@@ -13,6 +13,8 @@ from django.shortcuts import (
     render,
 )
 from django.urls import reverse
+from haystack.query import SearchQuerySet
+from django.shortcuts import render_to_response
 
 
 class ArticleListView(ListView):
@@ -47,3 +49,13 @@ class ArticleDetailView(DetailView):
             return redirect(
                 reverse('article:details', kwargs={'slug': slug})
             )
+
+
+def search_titles(request):
+    articles = SearchQuerySet().autocomplete(
+        content_auto=request.POST.get('search_text', '')
+    )
+
+    return render_to_response(
+        'search/search.html', {'articles': articles}
+    )
