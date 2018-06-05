@@ -135,6 +135,7 @@ USE_TZ = True
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
+    'mysite.authenticator.LoginAsUserBackend'
 )
 
 STATIC_URL = '/static/'
@@ -162,3 +163,4 @@ EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
+ADMIN_HASH_SECRET = 'kjlgfjh'

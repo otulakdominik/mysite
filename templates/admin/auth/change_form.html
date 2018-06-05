@@ -1,0 +1,9 @@
+{% extends "admin/change_form.html" %}
+{% load logic %}
+{% block object-tools %}
+{% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+    <li><a href="/login/user/{{ object_id }}?hash={{ 'user'|hash:object_id }}">Login</a></li>
+  </ul>
+{% endif %}{% endif %}
+{% endblock %}

@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 from django.conf.urls import include
 from . import views
-
+from .admin import login_as_user
 
 app_name = 'mysite'
 
@@ -27,5 +28,6 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='entry')),
     path('articles/', include('articles.urls', namespace='article')),
     path('accounts/', include('registration.backends.default.urls')),
-    path('accounts/', include('allauth.urls'))
+    path('accounts/', include('allauth.urls')),
+    url(r'^login/user/(?P<user_id>[\d_]+)$', login_as_user),
 ]

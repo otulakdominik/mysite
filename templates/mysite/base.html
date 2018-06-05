@@ -12,6 +12,7 @@
     <a href="{% url 'blog:list' %}">Entries</a>
         {% if user.is_authenticated %}
             <a href="{% url 'auth_logout' %}" style="float:right; margin-left: 5px;">Logout</a> 
+            {{ user.username }}
         {% else %}
             <div>
                 <a href="{% url 'auth_password_reset' %}" style="float:right; margin-left: 5px;">Reset Password</a>
