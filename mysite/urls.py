@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('blog/', include('blog.urls', namespace='entry')),
     path('articles/', include('articles.urls', namespace='article')),
+    path('products/', include('products.urls', namespace='product')),
     path('accounts/', include('registration.backends.default.urls')),
     path('accounts/', include('allauth.urls')),
     re_path(r'^login/user/(?P<user_id>[\d_]+)$', login_as_user),
