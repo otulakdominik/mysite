@@ -3,6 +3,8 @@ from django.views.decorators.http import require_POST
 from products.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
+from .tasks import send_email
+from django.template import loader
 
 
 @require_POST
@@ -34,3 +36,13 @@ def cart_detail(request):
             initial={'quantity': item['quantity'], 'update': True}
         )
     return render(request, 'cart/detail.html', {'cart': cart})
+
+
+def send_order(request):
+    cart = Cart(request)
+    user_email = request.user.email
+    template = 'cart/email/send_order_email.html'
+    text = loader.render_to_string(template, {'cart': cart, })
+    send_email.delay(text, user_email)
+    cart.clear()
+    return render(request, 'cart/order.html')

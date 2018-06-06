@@ -59,6 +59,6 @@
             </table>
         <p class="text-right">
             <a href="{% url "products:list" %}" class="btn btn-default">Continue Shopping</a>
-            <a href="" class="btn btn-primary">Checkout</a>
+            <a href="{% url 'cart:send_order' %}" class="btn btn-primary">Checkout</a>
         </p>
 {% endblock %}

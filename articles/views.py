@@ -13,8 +13,6 @@ from django.shortcuts import (
     render,
 )
 from django.urls import reverse
-from haystack.query import SearchQuerySet
-from django.shortcuts import render_to_response
 
 
 class ArticleListView(ListView):
