@@ -40,9 +40,12 @@ def cart_detail(request):
 
 def send_order(request):
     cart = Cart(request)
-    user_email = request.user.email
-    template = 'cart/email/send_order_email.html'
-    text = loader.render_to_string(template, {'cart': cart, })
-    send_email.delay(text, user_email)
-    cart.clear()
-    return render(request, 'cart/order.html')
+    if request.user.is_authenticated:
+        user_email = request.user.email
+        template = 'cart/email/send_order_email.html'
+        text = loader.render_to_string(template, {'cart': cart, })
+        send_email.delay(text, user_email)
+        cart.clear()
+        return render(request, 'cart/order.html')
+    else:
+        return render(request, 'mysite/base.html')

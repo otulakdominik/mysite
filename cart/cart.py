@@ -16,7 +16,7 @@ class Cart(object):
         if product_id not in self.cart:
             self.cart[product_id] = {
                 'quantity': 0,
-                'price': str(product.price)
+                'price': str(product.price),
             }
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity

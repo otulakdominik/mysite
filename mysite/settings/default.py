@@ -167,3 +167,4 @@ ADMIN_HASH_SECRET = 'kjlgfjh'
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 CART_SESSION_ID = 'cart'
+ADMIN_EMAIL = 'products@admin.com'
