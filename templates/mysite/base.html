@@ -10,6 +10,7 @@
     <body>
     <a href="{% url 'article:list' %}">Articles</a>
     <a href="{% url 'blog:list' %}">Entries</a>
+    <a href="{% url 'products:list' %}">Products</a>
         {% if user.is_authenticated %}
             <a href="{% url 'auth_logout' %}" style="float:right; margin-left: 5px;">Logout</a> 
             {{ user.username }}

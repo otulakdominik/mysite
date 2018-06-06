@@ -165,3 +165,5 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
 ADMIN_HASH_SECRET = 'kjlgfjh'
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+CART_SESSION_ID = 'cart'

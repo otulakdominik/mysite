@@ -6,7 +6,7 @@
       <header>
 
         <h2>
-          <a>{{ product.name }}</a>
+          <a href="{{ product.get_absolute_url }}" title="">{{ product.name }}</a>
           <a>{{ product.price }}</a>
         </h2>    
 
