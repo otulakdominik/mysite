@@ -8,9 +8,6 @@
         {% providers_media_js %}
     </head> 
     <body>
-        <form action="/search" method="get" class="navbar-search pull-left">
-            <input type="text" placeholder="Search" class="search-query span2" name="q">
-        </form>
     <a href="{% url 'article:list' %}">Articles</a>
     <a href="{% url 'blog:list' %}">Entries</a>
         {% if user.is_authenticated %}
@@ -25,6 +22,9 @@
                 <a href="{% provider_login_url 'twitter' %}">Sign in with Twitter</a>
             </div>
         {% endif %}
+        <form action="/search" method="get" class="navbar-search pull-left">
+            <input type="text" placeholder="Search" class="search-query span2" name="q">
+        </form>
         {% block content %}
 
         {% endblock %}

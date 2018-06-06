@@ -3,7 +3,7 @@ from .models import Entry
 
 
 class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
-    text = indexes.CharField(
+    text = indexes.EdgeNgramField(
         document=True,
         use_template=True,
     )
@@ -11,8 +11,6 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     pub_date = indexes.DateTimeField(
         model_attr='pub_date',
     )
-
-    content_auto = indexes.EdgeNgramField(model_attr='title')
 
     def get_model(self):
         return Entry

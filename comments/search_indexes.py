@@ -14,7 +14,5 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     entry = indexes.MultiValueField()
     article = indexes.MultiValueField()
 
-    content_auto = indexes.EdgeNgramField(model_attr='body')
-
     def get_model(self):
         return Comments
