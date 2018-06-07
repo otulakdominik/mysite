@@ -4,9 +4,9 @@
     </head>
     <body>
         <h2>Your Order
-        <br>
+            <br>
         </h2>
-            <table class="table table-striped table-hover">
+            <table>
                 <thead style="background-color: #5AC8FA">
                     <tr>
                         <th>Product</th>
@@ -15,22 +15,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for item in cart %}
-                    {% with product=item.product  %}
-                        <tr>
-                            <td>{{ product.name }}</td>
-                            <td>
-                                {{ item.quantity }}
-                            </td>
-                            <td>kshs. {{ item.price }}</td>
-                        </tr>
-                    {% endwith %}
-                {% endfor %}
-                <tr style="background-color: #5AC8FA">
-                    <td><b>Total</b></td>
-                    <td colspan="1"></td>
-                    <td colspan="num"><b>kshs. {{ cart.get_total_price }}</b></td>
-                </tr>
+                    {% for item in cart %}
+                        {% with product=item.product  %}
+                            <tr>
+                                <td>{{ product.name }}</td>
+                                <td>
+                                    {{ item.quantity }}
+                                </td>
+                                <td>kshs. {{ item.price }}</td>
+                            </tr>
+                        {% endwith %}
+                    {% endfor %}
+                    <tr style="background-color: #5AC8FA">
+                        <td><b>Total</b></td>
+                        <td colspan="1"></td>
+                        <td colspan="num"><b>kshs. {{ cart.get_total_price }}</b></td>
+                    </tr>
                 </tbody>
             </table>
     </body>
